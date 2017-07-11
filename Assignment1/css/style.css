@@ -1,0 +1,49 @@
+
+/* 
+    Created on : 2017-07-07, 16:46:17
+    Author     : josiane
+*/
+/*
+#box1{
+    background-color: #E2E1E6;
+    width:250px;
+    height:200px;
+    padding:5px;
+}
+*/
+h3{
+    /*border: 2px teal solid;*/
+    background-color: deepskyblue;
+    box-shadow: 4px 4px 3px teal;
+    text-decoration: underline;
+    font-weight: bold;
+    text-align: center;
+}
+
+#box1, #box2,#colorbox{
+    
+    width:500px;
+    height:400px;
+   
+    
+}
+#box2 table, tr, td{
+    border:1px black solid ;
+    text-align: center;
+  
+   
+ 
+}
+#box2 td, #colorbox td{
+      padding: 5px;
+}
+
+.head{
+    background-color: #E2E1E6;
+    font-weight: bold;
+}
+
+#colorbox table{
+    width: 100%;
+    
+}
