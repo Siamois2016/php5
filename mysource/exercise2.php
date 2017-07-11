@@ -1,9 +1,21 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+function evenOrOdd($num){
+    if($num%2==0){
+        echo "even";
+    }
+    if($num%2!=0){
+        echo "odd";
+    }
+    
+}
 
-//Try to write a ternary IF to determine if a value is even or odd.
+$exple = 50;
+echo "$exple is ";
+echo evenOrOdd($exple);
+
+function multiplyNum($a,$b){
+    return $a*$b;
+    
+}
+echo "<br> 5 times 2 is equal to: ".multiplyNum(5, 2);
