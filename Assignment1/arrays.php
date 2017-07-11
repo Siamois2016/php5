@@ -98,12 +98,7 @@
             ?>
             
         </div>
-         <div  id="box2">
-            <h3>Assignment 1.6 : OBJECTS</h3>
-            <?php
-            
-            ?>
-        </div>
+         
     </body>
 </html>
 
