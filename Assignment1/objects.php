@@ -11,7 +11,14 @@
     <body>
         <div  id="box2">
             <h3>Assignment 1.6 : OBJECTS</h3>
-            
+            <?php
+            $data = new CalculatorData();
+            ?>
         </div>
     </body>
 </html>
+<?php
+class CalculatorData extends SplEnum{
+    
+}
+?>
