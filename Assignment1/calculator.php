@@ -5,7 +5,7 @@
  * This class performs all arithmetic operations
  * Addition,substraction, multiplication and division
  * It returns the result of the operation
- * @author josiane
+ * @author josiane Gamgo
  */
 class calculator {
 

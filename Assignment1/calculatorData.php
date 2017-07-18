@@ -9,7 +9,7 @@
 /**
  * Description of CalculatorData
  *
- * @author josiane
+ * @author josiane Gamgo
  */
 class calculatorData {
 
