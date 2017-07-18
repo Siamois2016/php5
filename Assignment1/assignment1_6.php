@@ -16,7 +16,8 @@
             require_once 'calculator.php';
             require_once 'calculatorData.php';
 
-            $data = new calculatorData(operandEnum::MULTIPLY, 2, 30);
+            $data = new calculatorData(operandEnum::ADD, 2, 4);
+
             $calc = new calculator($data);
             return $calc;
             ?>

@@ -4,19 +4,26 @@
  * Description of Calculator:
  * This class performs all arithmetic operations
  * Addition,substraction, multiplication and division
+ * It returns the result of the operation
  * @author josiane
  */
 class calculator {
 
     private $calcdata;
 
-//defines a constructor with a calculatordata Object. Clear any previous calculation.
-
+    
+    /**
+     * define a constructor with a calculatordata Object. 
+     * Clear any previous calculation.
+     */
     function __construct(calculatorData $calcdata) {
-        $this->clear();
-        $this->calcdata = $calcdata;
-        $this->loadResult();
-         
+        if ($this->is_provided($calcdata) == TRUE) {
+            $this->clear();
+            $this->calcdata = $calcdata;
+            $this->loadResult();
+        } else {
+            echo "<h3 color='red'>No argument provided. Please provide a Calculator Data</h3>";
+        }
     }
 
 //Defines Getters and setters for private members
@@ -30,34 +37,18 @@ class calculator {
         $this->calcdata = $calcdata;
     }
 
-    //verify if there is a calculator data is provided
-
-    function is_emptycalc(calculatorData $cdata) {
-
-        if (empty($cdata)) {
-            echo 'No calculator Data found. Please provide one.';
-            return 1;
-        } else {
-            return 0;
-        }
-    }
 //reset the calculator data 
 
     function clear() {
         unset($this->calcdata);
     }
 
- //A controller method that calls the result function and return the result of the calculation.
+    // method that calls the result function and returns the result of the calculation.
 
     function loadResult() {
         $cdata = $this->getCalcdata();
-        //verify if the calculator data is there 
-        if ($this->is_emptycalc($cdata) == 1) {
-            return 'No calculator Data found. Please provide one.';
-        } else {
-            $this->setCalcdata($cdata);
-            return $this->result($cdata);
-        }
+        $this->setCalcdata($cdata);
+        return $this->result($cdata);
     }
 
 //compute all arithmetic operation 
@@ -84,7 +75,7 @@ class calculator {
 
                 break;
             default:
-                
+
                 break;
         }
         echo $object;
@@ -105,6 +96,26 @@ class calculator {
             return "The values substracted are: " . $a . " - " . $b . " = " . ($a - $b);
         } else {
             return "The values substracted are: " . $b . " - " . $a . " = " . ($b - $a);
+        }
+    }
+
+    /**
+     * Defines a method to verify if  a calculator data is 
+     * If provided, return true
+     * If it is an instance of calculatorData, return true
+     * If the argument is not empty return true
+     * If none of those : return false
+     */
+    function is_provided(&$cdata) {
+
+        if (isset($cdata)) {
+            return true;
+        } else {
+            if (($cdata instanceof calculatorData) && !empty($cdata)) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
