@@ -11,7 +11,7 @@
  *
  * @author josiane Gamgo
  */
-class calculatorData {
+class CalculatorData {
 
     //Defining private members
     private $number1;

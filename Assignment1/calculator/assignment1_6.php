@@ -13,11 +13,11 @@
         <div  id="box2">
             <h3>Assignment 1.6 : OBJECTS</h3>
             <?php
+            //calling the calculator to display the results
             require_once 'calculator.php';
             require_once 'calculatorData.php';
-
+            
             $data = new calculatorData(operandEnum::ADD, 2, 4);
-
             $calc = new calculator($data);
             return $calc;
             ?>

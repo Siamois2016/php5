@@ -7,7 +7,8 @@
  * It returns the result of the operation
  * @author josiane Gamgo
  */
-class calculator {
+require_once 'operandEnum.php';
+class Calculator {
 
     private $calcdata;
 
@@ -16,13 +17,13 @@ class calculator {
      * define a constructor with a calculatordata Object. 
      * Clear any previous calculation.
      */
-    function __construct(calculatorData $calcdata) {
-        if ($this->is_provided($calcdata) == TRUE) {
+    function __construct(CalculatorData $calcdata) {
+       try {
             $this->clear();
             $this->calcdata = $calcdata;
             $this->loadResult();
-        } else {
-            echo "<h3 color='red'>No argument provided. Please provide a Calculator Data</h3>";
+        } catch (Exception $exc) {
+            echo $exc."<br>A calculator Data must be provided";
         }
     }
 
@@ -53,9 +54,10 @@ class calculator {
 
 //compute all arithmetic operation 
 
-    function result(calculatorData $calcdata) {
-
-        $op = $calcdata->getOperand();
+    function result(CalculatorData $calcdata) {
+        try {
+            if($this->is_provided($calcdata)){
+          $op = $calcdata->getOperand();
         $n1 = $calcdata->getNumber1();
         $n2 = $calcdata->getNumber2();
 
@@ -78,7 +80,17 @@ class calculator {
 
                 break;
         }
-        echo $object;
+        echo $object;  
+            
+        }else{
+            return "A calculator Data must be provided";
+        }
+        } catch (Exception $exc) {
+            echo "A calculator Data must be provided";
+        }
+
+        
+        
     }
 
 //work around for the division by 0 
@@ -106,12 +118,12 @@ class calculator {
      * If the argument is not empty return true
      * If none of those : return false
      */
-    function is_provided(&$cdata) {
+    function is_provided($cdata) {
 
         if (isset($cdata)) {
             return true;
         } else {
-            if (($cdata instanceof calculatorData) && !empty($cdata)) {
+            if (($cdata instanceof CalculatorData) && !empty($cdata)) {
                 return true;
             } else {
                 return false;
@@ -121,13 +133,4 @@ class calculator {
 
 }
 
-//A class to enumerate the arithmetic operand to be used
-class operandEnum {
 
-    const __default = self::Add;
-    const ADD = 0;
-    const SUBSTRACT = 1;
-    const MULTIPLY = 2;
-    const DIVIDE = 3;
-
-}
