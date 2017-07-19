@@ -55,7 +55,7 @@ class Calculator {
 //compute all arithmetic operation 
 
     function result(CalculatorData $calcdata) {
-        try {
+      
             if($this->is_provided($calcdata)){
           $op = $calcdata->getOperand();
         $n1 = $calcdata->getNumber1();
@@ -85,10 +85,6 @@ class Calculator {
         }else{
             return "A calculator Data must be provided";
         }
-        } catch (Exception $exc) {
-            echo "A calculator Data must be provided";
-        }
-
         
         
     }
