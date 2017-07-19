@@ -62,13 +62,13 @@ class Calculator {
 
         switch ($op) {
             case OperandEnum::ADD:
-                return "added are: " . $n1 . " + " . $n2 . " = " . ($n1 + $n2);
+                return "The values added are: " . $n1 . " + " . $n2 . " = " . ($n1 + $n2);
 
             case OperandEnum::SUBSTRACT:
-                return "substracted are: " . $this->substract($n1, $n2);
+                return  $this->substract($n1, $n2);
 
             case OperandEnum::MULTIPLY:
-                return "multiplied are: " . $n1 . " * " . $n2 . " = " . $n1 * $n2;
+                return "The values multiplied are: " . $n1 . " * " . $n2 . " = " . $n1 * $n2;
 
             case OperandEnum::DIVIDE:
                 return $this->divide($n1, $n2);
@@ -80,19 +80,22 @@ class Calculator {
 
 //work around for the division by 0 
     function divide($a, $b) {
+        
         if ($b == 0) {
             return 'Sorry!!! Division by 0';
         } else {
-            return "divided are: " . $a . " / " . $b . " = " . $a / $b;
+            
+            return  sprintf("The values divided are:  $a / $b = $ %.3f", $a / $b);
         }
     }
 
 //function for the substraction of two numbers 
     function substract($a, $b) {
+            $text = "The values substracted are:";
         if ($a >= $b) {
-            return "substracted are: " . $a . " - " . $b . " = " . ($a - $b);
+            return $text . $a . " - " . $b . " = " . ($a - $b);
         } else {
-            return "substracted are: " . $b . " - " . $a . " = " . ($b - $a);
+            return $text . $b . " - " . $a . " = " . ($b - $a);
         }
     }
 
@@ -117,7 +120,7 @@ class Calculator {
     }
 
     function __toString() {
-        return "The values " . $this->getResult($this->getCalcdata());
+        return  $this->getResult($this->getCalcdata());
     }
 
 }
