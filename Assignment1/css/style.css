@@ -1,16 +1,10 @@
 
 /* 
     Created on : 2017-07-07, 16:46:17
-    Author     : josiane
+    Modified on : 2017-07-19, 18:04:56
+    Author     : josiane Gamgo
 */
-/*
-#box1{
-    background-color: #E2E1E6;
-    width:250px;
-    height:200px;
-    padding:5px;
-}
-*/
+
 h3{
     /*border: 2px teal solid;*/
     background-color: deepskyblue;
@@ -20,7 +14,7 @@ h3{
     text-align: center;
 }
 
-#box1, #box2,#colorbox{
+ #box2,#colorbox{
     
     width:500px;
     height:400px;

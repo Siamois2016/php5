@@ -5,9 +5,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="css/style.css"/>
-        <title>Assignment1_part4-5</title>
+        <link rel="stylesheet" href="../css/style.css"/>
+        
+        <title>Assignment1: part 4 and 5</title>
     </head>
     <body>
         <div id="colorbox">

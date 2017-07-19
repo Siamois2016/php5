@@ -8,22 +8,29 @@
  * @author josiane Gamgo
  */
 require_once 'operandEnum.php';
+
 class Calculator {
 
     private $calcdata;
 
-    
     /**
      * define a constructor with a calculatordata Object. 
      * Clear any previous calculation.
      */
     function __construct(CalculatorData $calcdata) {
-       try {
-            $this->clear();
+        $this->clear();
+        try {
             $this->calcdata = $calcdata;
-            $this->loadResult();
+            //verify if the argument is provided and is a Calculator Data
+            if ($this->is_provided($this->calcdata)) {
+
+                $this->getResult($this->calcdata);
+            } else {
+                
+                return "A calculator Data must be provided";
+            }
         } catch (Exception $exc) {
-            echo $exc."<br>A calculator Data must be provided";
+            echo $exc;
         }
     }
 
@@ -44,49 +51,31 @@ class Calculator {
         unset($this->calcdata);
     }
 
-    // method that calls the result function and returns the result of the calculation.
-
-    function loadResult() {
-        $cdata = $this->getCalcdata();
-        $this->setCalcdata($cdata);
-        return $this->result($cdata);
-    }
-
 //compute all arithmetic operation 
 
-    function result(CalculatorData $calcdata) {
-      
-            if($this->is_provided($calcdata)){
-          $op = $calcdata->getOperand();
+    function getResult(CalculatorData $calcdata) {
+
+
+        $op = $calcdata->getOperand();
         $n1 = $calcdata->getNumber1();
         $n2 = $calcdata->getNumber2();
 
         switch ($op) {
             case OperandEnum::ADD:
-                $object = "The values added are: " . $n1 . " + " . $n2 . " = " . ($n1 + $n2);
+                return "added are: " . $n1 . " + " . $n2 . " = " . ($n1 + $n2);
 
-                break;
             case OperandEnum::SUBSTRACT:
-                $object = $this->substract($n1, $n2);
-                break;
+                return "substracted are: " . $this->substract($n1, $n2);
+
             case OperandEnum::MULTIPLY:
-                $object = "The values multiplied are: " . $n1 . " * " . $n2 . " = " . $n1 * $n2;
-                break;
+                return "multiplied are: " . $n1 . " * " . $n2 . " = " . $n1 * $n2;
+
             case OperandEnum::DIVIDE:
-                $object = $this->divide($n1, $n2);
+                return $this->divide($n1, $n2);
 
-                break;
             default:
-
-                break;
+                return "No operand provided";
         }
-        echo $object;  
-            
-        }else{
-            return "A calculator Data must be provided";
-        }
-        
-        
     }
 
 //work around for the division by 0 
@@ -94,16 +83,16 @@ class Calculator {
         if ($b == 0) {
             return 'Sorry!!! Division by 0';
         } else {
-            return "The values divided are: " . $a . " / " . $b . " = " . $a / $b;
+            return "divided are: " . $a . " / " . $b . " = " . $a / $b;
         }
     }
 
 //function for the substraction of two numbers 
     function substract($a, $b) {
         if ($a >= $b) {
-            return "The values substracted are: " . $a . " - " . $b . " = " . ($a - $b);
+            return "substracted are: " . $a . " - " . $b . " = " . ($a - $b);
         } else {
-            return "The values substracted are: " . $b . " - " . $a . " = " . ($b - $a);
+            return "substracted are: " . $b . " - " . $a . " = " . ($b - $a);
         }
     }
 
@@ -127,6 +116,8 @@ class Calculator {
         }
     }
 
+    function __toString() {
+        return "The values " . $this->getResult($this->getCalcdata());
+    }
+
 }
-
-
