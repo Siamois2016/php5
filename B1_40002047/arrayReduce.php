@@ -9,9 +9,9 @@ function filterArray($a){
     foreach ($a as $key => $value) {
        
         if(strcmp($key, "QC")===0){
-            $extract[][].=$value;
+            $extract[][].=$value;//this always takes the last value with key=QC
         }else{continue;}
-next($extract);
+
     }
     unset($value);
     
