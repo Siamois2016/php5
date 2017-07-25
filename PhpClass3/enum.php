@@ -1,10 +1,10 @@
 
 <?php
 
-class OperandEnum extends SplEnum {
+class OperandEnum  extends SplEnum{
  //extends means inherit from the parent class
     //splEnum is the skeleton for enumeration class
-    const __default = self::Add;
+ const __default = self::Add;
     const Add = 0 ;  
   const Substract = 1; 
 const Multiply = 2 ;
