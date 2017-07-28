@@ -5,16 +5,13 @@
  *
  * @author jgamgo
  */
+
 class Doctor extends Employee{
-    private $licenseNr;
-    private $specialty;
-    function __construct($licenseNr, $specialty) {
-        parent::__construct($employeeNr, $firstName, $lastName, $hireDate);
-        $this->licenseNr = $licenseNr;
-        $this->specialty = $specialty;
-    }
 
     
+    private $licenseNr;
+    private $specialty;
+       
     function getLicenseNr() {
         return $this->licenseNr;
     }
@@ -33,9 +30,8 @@ class Doctor extends Employee{
 
         
     
-    protected function getName() {
-        return "Dr.".parent::getName();
+    public function getName() {
+        return "Dr.".parent::getFirstName()." ". parent::getLastName();
     }
 
-//put your code here
 }

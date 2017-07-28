@@ -14,20 +14,22 @@
  *  
  * @author jgamgo
  */
+
 abstract class Employee {
     private $employeeNr;
     private $firstName;
     private $lastName;
     private $hireDate;
     private $salary; //must not be overritten
+    protected $name;
     //constructor
-    
+   /* 
     function __construct($employeeNr, $firstName, $lastName, $hireDate) {
         $this->employeeNr = $employeeNr;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->hireDate = $hireDate;
-    }
+    }*/
 
     
     function getEmployeeNr() {
@@ -70,7 +72,5 @@ abstract class Employee {
         $this->salary = $salary;
     }
 
-    public function getName(){
-        return $this->firstName.", ".$this->lastName;
-    }
+    public abstract function getName();
 }
