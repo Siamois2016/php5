@@ -72,7 +72,7 @@
              * function returns the result with 3 digits after the dot
              */
 
-            $salesAmount = 100.50;
+            $salesAmount = 100.00;
             printf("floatNumberResult = $ %.3f", calculateQuebecTax($salesAmount));
             ?>
 
