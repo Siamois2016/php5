@@ -16,4 +16,5 @@ class ChildClass extends BaseClass {
         echo "ChildClass::moreTesting() called\n";
         echo $this->name;
         }
+        //Fatal error: Cannot override final method BaseClass::moreTesting() 
 }
