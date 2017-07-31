@@ -1,0 +1,34 @@
+<html>
+<head>
+    <script type="text/javascript">
+        var counter = 0;
+        function addTextbox()
+        {
+            var div = document.createElement('DIV');
+            div.innerHTML = '<input id="text' + counter + '" name = "text' + counter +
+                '" type="text" /> ' +
+                '<input id="Button' + counter + '" type="button" ' +
+                'value="Remove text' + counter + '" onclick = "removeFile(this)" /> Hint: this control name is: text'+counter;
+            document.getElementById("FormContainer").appendChild(div);
+            counter++;
+        }
+        function removeFile(div)
+        {
+            document.getElementById("FormContainer").removeChild(div.parentNode);
+        }
+    </script>
+</head>
+<body>
+<form id="form1" runat="server" enctype="multipart/form-data" method = "post" action="processfile.php">
+    <p>Please enter your name: <input type="text" name="name"/></p>
+    <span style ="font-family:Arial">Click to add new text boxes.</span>&nbsp;&nbsp;
+    <input id="Button1" type="button" value="add" onclick = "addTextbox()" />
+    <br /><br />
+    <div id = "FormContainer">
+        <!-- Controls will be added here -->
+    </div>
+    <br />
+    <input type="submit" value="Process!">
+</form>
+</body>
+</html>
