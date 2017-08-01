@@ -72,7 +72,7 @@ class Train {
 }
 
 function compare(Car $a,Car $b){
-    if($a->getCarID() >= $b->getCarID()){
+    if($a->getCarID() <= $b->getCarID()){
         
       return 1;  
     }else{

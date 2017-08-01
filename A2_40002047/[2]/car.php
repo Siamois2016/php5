@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of train
+ * Description of Car
  *
  * @author jgamgo
  */
