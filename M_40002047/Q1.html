@@ -19,8 +19,10 @@
     </script>
 </head>
 <body>
-<form id="form1" runat="server" enctype="multipart/form-data" method = "post" action="processfile.php">
-    Please enter your name: <input id="name" type="text" name="name" /><br>
+<form id="form1" enctype="multipart/form-data" method = "post" action="processfile.php">
+   <p>
+       Please enter your name: <input  type="text" name="myName" />
+   </p>
     <span style ="font-family:Arial">Click to add new text boxes.</span>&nbsp;&nbsp;
    
     <input id="Button1" type="button" value="add" onclick = "addTextbox()" />
