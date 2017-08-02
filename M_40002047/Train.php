@@ -5,116 +5,64 @@
  *
  * @author j_gamgo
  */
-
-
 class Train {
 
     private $train_number;
     private $arrayOfCars = array();
-    private static $trainCounter = 1;
+    public static $trainCounter;
 
     // Constructor
     function __construct() {
 
-        $this->train_number = Train::$trainCounter ;
-        Train::$trainCounter = Train::$trainCounter + 1;
-    }
-
-    //getters and setters
-    function getTrain_number() {
-        return $this->train_number;
-    }
-
-    static function getTrainCounter() {
-        return self::$trainCounter;
-    }
-
-    function setTrain_number($train_number) {
-        $this->train_number = $train_number;
-    }
-
-    static function setTrainCounter($trainCounter) {
-        self::$trainCounter = (self::$trainCounter + $trainCounter);
-    }
-
-    function getArrayOfCars() {
-        return $this->arrayOfCars;
-    }
-
-    function setArrayOfCars($arrayOfCars) {
-        $this->arrayOfCars = $arrayOfCars;
-    }
-
-    public function __toString() {
-        $output = "Train ID : " . $this->getTrain_number() . "<br>";
-       
-        return $output;
+        $this->train_number = ++Train::$trainCounter;
     }
 
 //add a car
-    function addCar(Car $car) {
-       $array= $this->getArrayOfCars();
-       // $car->setCarID(1);
-       array_push($array, $car);
-       $this->setArrayOfCars($array);
-       
-        
+    public function addCar(Car $car) {
+
+        array_push($this->arrayOfCars, $car);
     }
 
     //number of cars
-    function carCount() {
-       
-        return Car::getStaticCounter();
+    public function carCount() {
+
+        return count($this->arrayOfCars);
     }
-
-
 
 //list the cars 
- 
-    function listCars() {
-      $array = $this->getArrayOfCars();
-      echo "List of Cars as positioned in the train <br>";
-      echo "Train ID : " . $this->getTrain_number() . "<br>";
 
-         foreach ($array as $car) {
+    function listCars() {
+        // $array = $this->getArrayOfCars();
+        echo "<p>List of Cars as positioned in the train </p>";
+        echo "<p>Train ID : " . $this->train_number . "</p>";
+
+        foreach ($this->arrayOfCars as $car) {
             echo $car . "<br>";
         }
-
     }
 
-//sorting the car in desc
+//sorting the car in asc
     function sortAscending() {
-       $array = $this->getArrayOfCars();
-        
-        ksort($array);
-       foreach ($array as $car) {
-            echo $car . "<br>";
-        }
+
+        usort($this->arrayOfCars, function ($val1, $val2) {
+            return ($val1->getCarID() == $val2->getCarID()) ? 0 : (($val1->getCarID() > $val2->getCarID()) ? 1 : -1);
+        });
     }
 
 //sort descending
 
-    function sortDescending() {
-        $array = $this->getArrayOfCars();
-         krsort($array);
-              foreach ($array as $car) {
-            echo $car . "<br>";
-        }
- 
+    public function sortDescending() {
+        usort($this->arrayOfCars, function($val1, $val2) {
+
+            if ($val1->getCarID() == $val2->getCarID()) {
+                return 0;
+            }
+            if ($val1->getCarID() < $val2->getCarID()) {
+                return 1;
+            } else {
+                return -1;
+            }
+        });
     }
 
-}
-   function compare($val1,$val2){
-   
-       if($val1->getCarID()<$val2->getCarID()){
-       return -1;
-   }
-   else if($val1->getCarID()>$val2->getCarID()){return 1;
-   
-   }
-   else{
-       return 0;
-   }
-   
-    
 }
