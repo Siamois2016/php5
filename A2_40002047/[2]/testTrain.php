@@ -6,25 +6,26 @@ require_once 'train.php';
 function hr(){
     echo "<hr>";
 }
+//create car object
 $c1 = new Car("Company 1", "Wheat");
 $c2 = new Car("Company 2", "Flax Seed");
-//$c3 = new Car("Company 3", "Milk");
+
+//create a train object and add cars into it
 $t1 = new Train();
-//$t2 = new Train();
 $t1->AddCar($c1);
 $t1->AddCar($c2);
-//$t2->AddCar($c3);
-echo "Number of Cars in Train ID ".$t1->getTrain_number()."= ".$t1->CarCount()."<br>";
-//echo "Number of Cars in Train# ".$t2->getTrain_number()."= ".$t2->CarCount();
+echo "Number of Cars in the train= ".$t1->CarCount()."<br>";
+
 hr();
+//list the cars in a train
 $t1->ListCars();
 hr();
-echo "Sort Descending<br>";
+//sort descending 
 $t1->sortDescending();
 $t1->ListCars();
 hr();
-echo "Sort Ascending<br>";
+//sort ascending 
 $t1->sortAscending();
 $t1->ListCars();
-hr();
+
 
