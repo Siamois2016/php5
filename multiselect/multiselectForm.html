@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>multiselect</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <form method="POST" action="processform.php">
+                <p>Select a Menu:</p>
+                <p>
+                <select name="menu[]" multiple="multiple" >
+                    <option value="1" name="salad">salad</option>
+                    <option value="2" name="rice">rice</option>
+                    <option value="3" name="cake">Cake</option>
+                    
+                    
+                </select>
+                    </p>
+                <input type="submit" value="submit"/>
+                
+            </form>
+            
+            
+        </div>
+    </body>
+</html>
