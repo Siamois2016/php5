@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Use [] array marker in the name of the select.
+Eg: name="foobar[]"
+It is not recommended to make multivalue form
+values sticky. Reconsider the form strategy if so.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Multi value select</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <form method="POST" action="selectMulti.php">
+            <!-- All option will be stored in s1[] -->
             <select name="s1[]" multiple="multiple">
                 <option value="val1" selected="selected">val1</option>
                 <option value="val2">val2</option>

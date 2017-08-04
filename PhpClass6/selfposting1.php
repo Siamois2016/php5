@@ -18,7 +18,7 @@ $val2="";
 
 
 <html>
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" id="supportform">
         Enter First Number: <br><input type="text" name="val1" value="<?php echo $val1;?>"/><br><br>
         Enter Second Number: <br><input type="text" name="val2" value=" <?php echo $val2;?>"/><br><br>
         <input type="submit" value="Add Numbers"/>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Hide a Box</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="hideABox.js"></script>
+    </head>
+    <body>
+        <div id="stickyform">
+                <h3>Please enter a message to send to our technical support group</h3>
+
+                <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" >
+                    <p> <label for="name">Your Name:</label><br><br>
+                        <input  type="text" id="name" name="name" size="50"/>
+                    </p>
+                    <p><label for="message">Message:</label><br><br>
+                        <input  type="text" id="message" name="message" size="50"/>
+                    </p>
+                    <p><input type="submit" value="Submit"/></p>
+                    
+
+                </form>  
+
+            </div>
+        
+        <p><input type="button" value="Hide/Display Form" onclick="hideForm()"/></p>
+
+        
+    </body>
+</html>
