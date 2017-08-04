@@ -22,7 +22,7 @@
             <div id="stickyform">
                 <h3>Please enter a message to send to our technical support group</h3>
 
-                <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" >
+                <form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" >
                     <p> <label for="name">Your Name:</label><br><br>
                         <input  type="text" id="name" name="name" value="<?php echo $n; ?>" size="50"/>
                     </p>
@@ -51,7 +51,7 @@
          * 
          */
         
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if (!(empty($_POST['name'])) && !(empty($_POST['message']))){
                 
@@ -72,6 +72,9 @@
                     echo "<p>No MESSAGE has been entered.</p>";
                 }
             }
+        }
+        else{
+            die("This script only works with GET or POST requests.");
         }
         ?>
     </body>
