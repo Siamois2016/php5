@@ -15,6 +15,25 @@
          * Method recieve the 2 values as parameter
          *
          */
+ /*       
+        if (POST)
+            if message is empty 
+                $message_error = 1;
+        
+        
+        
+        if GET OR error
+            display html`
+            if error message display message error
+            if errror name display name error
+            
+if POST and NO ERROR
+
+display thank you message
+
+
+*/
+
         
         function displayForm($n,$m){
             
@@ -43,6 +62,7 @@
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             
             displayForm("", "");
+            
         }
         /*
          * when the form is submitted: validation and processing
