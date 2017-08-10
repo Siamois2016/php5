@@ -30,19 +30,19 @@ $word1="bright blue sky and lighter";
 $word2="abuzz";
 $word3="123hfs46l*jk87";
 $word4="h890jh21l12ere78";
-
+//1.
 $pattern1="/blue/";
 matchRegex($pattern1, $word1);
-
+//2.
 $pattern2 ="/^br/";
 matchRegex($pattern2, $word1);
-
+//3.
 $pattern3="/(^a)\w*(z$)/";
 matchRegex($pattern3, $word2);
-
+//4.
 $pattern4="/^\d{2}/";
 matchRegex($pattern4, $word3);
-
+//5.
 $pattern5="/[0-9]{2}/";
-//matchRegex($pattern5, $word3);
+
 matchRegex($pattern5, $word4);

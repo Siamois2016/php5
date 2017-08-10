@@ -4,40 +4,33 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="messageStyle.css"/>
-       
+
     </head>
 
     <body>
 
         <?php
-        /*displayForm($n,$m):A function that displays the form , 
+        //verify the request method and display the message in case of error
+        $name_error = 0;
+        $message_error = 0;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (empty($_POST['name'])) {
+                $name_error = 1;
+            }
+            if (empty($_POST['message'])) {
+                $message_error = 1;
+            }
+        }
+
+        /* displayForm($n,$m):A function that displays the form , 
          * whatever is entered in the other field still shows if this field is empty
          * Method recieve the 2 values as parameter
          *
          */
- /*       
-        if (POST)
-            if message is empty 
-                $message_error = 1;
-        
-        
-        
-        if GET OR error
-            display html`
-            if error message display message error
-            if errror name display name error
-            
-if POST and NO ERROR
 
-display thank you message
-
-
-*/
-
-        
-        function displayForm($n,$m){
-            
-        ?>
+        function displayForm($n, $m) {
+            ?>
             <div id="stickyform">
                 <h3>Please enter a message to send to our technical support group</h3>
 
@@ -49,51 +42,48 @@ display thank you message
                         <input  type="text" id="message" name="message" value="<?php echo $m; ?>" size="50"/>
                     </p>
                     <p><input type="submit" value="Submit"/></p>
-                    
+
 
 
                 </form>  
 
             </div>
-        <?php
+            <?php
         }
-         //Display the form when going into it for the first time
-        
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            
-            displayForm("", "");
-            
-        }
+
         /*
-         * when the form is submitted: validation and processing
-         * if all fields are filled. display success message and Form disappears
-         * if there is no name or no message show the form and the warning message
-         * 
+         * If the server recieves a GET (while going into form for the first time)
+         *  or
+         * if the name or the message are empty
+         * Display the form        
          */
-        
-        else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            if (!(empty($_POST['name'])) && !(empty($_POST['message']))){
-                
-                echo "<p>Thanks! your message has been submitted</p>";
-                
-            } 
-            else{
-                
-                displayForm($_POST['name'], $_POST['message']);
-             
-                if (empty($_POST['name'])) {
+        if (($_SERVER['REQUEST_METHOD'] == 'GET') || ($name_error == 1) || ($message_error == 1)) {
 
-                    echo "<p>NAME  is not entered please enter your name.</p>";
-                }
-               
-                if (empty($_POST['message'])){
-                    
-                    echo "<p>No MESSAGE has been entered.</p>";
-                }
+            if ($name_error == 1) {
+                $m = $_POST['message'];
+                displayForm("", $m);
+                echo "<p>NAME  is not entered please enter your name.</p>";
+            } else if ($message_error == 1) {
+                $n = $_POST['name'];
+                displayForm($n, "");
+                echo "<p>No MESSAGE has been entered.</p>";
+            } else {
+                displayForm("", "");
             }
         }
-        else{
+        /* If the server recieves a post and 
+         * if all fields are filled.
+         * display success message and Form disappears
+         * 
+         */
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            if (!($message_error) && !($name_error)) {
+
+                echo "<p>Thanks! your message has been submitted</p>";
+            }
+        } else {
             die("This script only works with GET or POST requests.");
         }
         ?>
