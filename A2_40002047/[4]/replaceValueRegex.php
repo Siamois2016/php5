@@ -21,17 +21,16 @@ function changeNumberToString($matches) {
             return "eight";
         case 9:
             return "nine";
-          case 0:
+        case 0:
             return "zero";
     }
 }
-
 
 echo preg_replace_callback("/\d/", 'changeNumberToString', "1,2,3,4,5,6,7,8,9,0");
 
 //2. Get rid of all numbers in a string. (“abc123abc” = “abcabc”).
 $string = "abc123abc";
 $p = "/\d+/";
-$replacement ="";
+$replacement = "";
 echo "<hr>";
 echo preg_replace($p, $replacement, $string);

@@ -18,8 +18,7 @@ function getCharsFromString($subject) {
 
 /*
  * Function to find the first word of a sentence
- * $pattern is the regex that matches the first word of a sentence 
- * with no white space
+ * $pattern is the regex that matches the first word of a sentence with no white space
  * function returns the only match
  */
 function getFirstWord($subject){
