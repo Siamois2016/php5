@@ -47,6 +47,8 @@ $stmt = $db->query('SELECT * FROM employee;');
                 echo "<td>" . $emp_id . "</td>" .
                 "<td>" . $lastname . "</td>" .
                 "<td>" . $department . "</td>";
+               echo "<td><a href='$self?delete=$emp_id'>Delete</a></td>";
+                //add a form with 2 input , one submit button and one hidden button change all to post
                 echo "<td><a href='$self?delete=$emp_id'>Delete</a></td>";
 
                 echo "</tr>";
