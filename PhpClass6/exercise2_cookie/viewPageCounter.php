@@ -10,5 +10,3 @@ if(isset($_COOKIE["counter"])){
     setcookie('counter', 1, $expire);
     echo (1);
 }
-
-

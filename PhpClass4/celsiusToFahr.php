@@ -15,7 +15,7 @@ Fahrenheit temperature:
 } else if ($_SERVER['REQUEST_METHOD']=='POST'){
 $fahr= $_POST['fahrenheit'];
     $celsius = ($fahr - 32) * 5/9;
-printf("%.2fF is %.2fC", $fahr, $celsius);
+printf("%.2fF is equal to %.2fC", $fahr, $celsius);
 }
 ?>
 </body>

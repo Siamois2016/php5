@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 //step1
 define('EMPID',4);
@@ -7,7 +7,8 @@ define('DEPTID',34);
 
 $lname='skyrock';
 $depid =33;
-$db = new PDO('mysql:host=localhost;dbname=459_class7_jg', 'root', 'concordia');
+//$db = new PDO('mysql:host=localhost;dbname=459_class7_jg', 'root', 'concordia');
+$db = new PDO('mysql:host=localhost;dbname=459_class7_jg', 'root', '');
 $db->setAttribute(PDO::ATTR_ERRMODE,  PDO::ERRMODE_EXCEPTION);
 
 //$stmt = $db->prepare("SELECT * FROM employee WHERE employeeid=:empid AND deparmentid =:dptid");
