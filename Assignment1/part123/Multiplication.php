@@ -13,6 +13,11 @@
             <!-- [1]  --> 
             <h3>Assignment 1.1 :  Even/Odd</h3>
             <?php
+            // define magic numbers for taxes
+                define("GST", 0.05);
+                define("QST", 0.09975);  
+            
+            
             /* Even or Odd: ternatry if statement
              * define if a value is even or odd
              */
@@ -57,11 +62,9 @@
         <div id ="box2">
             <h3>Assignment 1.3 : FUNCTIONS</h3>
             <?php
-
+ 
             function calculateQuebecTax($salesAmount) {
-                // define magic numbers for taxes
-                define("GST", 0.05);
-                define("QST", 0.09975);
+             
                 $gst = $salesAmount * GST;
                 $qst = $salesAmount * QST;
 
