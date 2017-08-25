@@ -1,29 +1,35 @@
-
 <html>
     <head>
-        <title>Assignment3 - [1]PDO1 - FEEDBACK FORM</title>
+        <title>Assignment3 - [2]PDO2 - FEEDBACK FORM ENHANCED</title>
         <meta charset="utf8"/>
         <link rel="stylesheet"  type="text/css" href="style.css"/>
     </head>
-    <body>
-       
-        <?php
+<body>
+
+
+<?php
         /*
 
-         * a very simple page for a company that customers can use to request information about a product. 
-         * It will take the information and insert the values into a row into the database.         
+         * Enhancing the feedback form :
+         * code a drop-down selection allowing selection of a product from the customer.
+         * The products that are listed are read from the “Products” table in the database.
          */
 
-        define('PRODUCTID', NULL);
+        //select the products from the database
+    try {
 
-        /*
-         * A function to display the form
-         * Assuming the phone number is a canadian local phone like 999-999-9999
-         */
+            
+
+        //a function to display the html form 
 
         function displayForm() {
-            ?>
-        <div class='box'>
+            //define the connection string 
+            $db = new PDO('mysql:hostname=localhost:3307;dbname=cewp459_a3', 'root', 'concordia'); 
+            $statement = $db->query("SELECT * FROM products ");
+            $resultset = $statement->fetchAll(PDO::FETCH_ASSOC);
+       
+?>
+             <div class='box'>
             <p><h2>Customer Inquiry Form</h2> </p>
             <p> Please fill the following form and a customer service representative should get back to you within 72 hours.</p>
            
@@ -39,40 +45,49 @@
                 <label>Phone Number :</label> 
                 <input type="text" name="phone"  pattern="\d{3}[\s-.]\d{3}[\s-.]\d{4}"/>  
                 
-                <label>Question :</label> 
+                <label>Select Product :</label> 
+                <select name="productid">
+
+                    <?php
+                    foreach ($resultset as $row) {
+                        echo "<option value='" . $row['ID'] . "'>" . $row['Name'] . "</option>";
+                    }
+                    ?>   
+
+
+                </select>
+              <label>Question :</label> 
                 <input type="text" name="question"/> 
             </div>
             <div><input type="submit" value="SUBMIT QUESTION"/> </div>
 
             </form> 
         </div>
-        <?php
+
+<?php
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        //display the form with select options  
         displayForm();
     }
-
-
-
-
-// check if post 
+// check if the form is send 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         displayForm();
 //validate values
         if (!empty($_POST['email']) && !empty($_POST['firstname']) &&
                 !empty($_POST['lastname']) && !empty($_POST['phone']) &&
                 !empty($_POST['question'])) {
+            //assign variables to post values 
             $email = $_POST['email'];
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $phone = $_POST['phone'];
+            $productId = $_POST['productid'];
             $question = $_POST['question'];
-            try {
-                // connection string  and statement
-                
+            //use PDO to insert data into the Webinquiries table
                 $db = new PDO('mysql:hostname=localhost:3307;dbname=cewp459_a3', 'root', 'concordia');
-                $stmt = $db->prepare("INSERT INTO WebInquiries(Email,FirstName,LastName,Phone,ProductId,Question )"
+                $stmt = $db->prepare("INSERT INTO WebInquiries(Email,FirstName,LastName,Phone,ProductId,Question)"
                         . " VALUES(:mail,:fname,:lname,:phone,:productid,:qst)");
 
                 //bind parameters with variables
@@ -81,21 +96,17 @@
                 $stmt->bindParam(':fname', $firstname);
                 $stmt->bindParam(':lname', $lastname);
                 $stmt->bindParam(':phone', $phone);
-                $stmt->bindValue(':productid', PRODUCTID);
+                $stmt->bindParam(':productid', $productId);
                 $stmt->bindParam(':qst', $question);
 
 
-            //Do the insertion 
+                //Do the insertion 
                 $stmt->execute();
-             // Get the last inserted id
-                $lastID=$db->lastInsertId();
-               
-                 echo "<div class='msgbox1'>Thank you for your enquiry. Your reference ID is $lastID .</div>";
-            } catch (PDOException $pdoe) {
-                echo $pdoe;
-               echo "<div class='msgbox2'>Your request couldn't be completed, an error has occured. Please try again.</div>";
-                
-            }
+                // Get the last inserted id
+                $lastID = $db->lastInsertId();
+
+                echo "<div class='msgbox1'>Thank you for your enquiry. Your reference ID is $lastID .</div>";
+           
         }
          if (empty($_POST['email'])&& empty($_POST['phone'])) {
             echo "<div class='msgbox2'>Please provide a valid email Address or phone number to contact you.</div>";
@@ -106,19 +117,20 @@
         if (empty($_POST['firstname'])&& empty($_POST['lastname'])) {
             echo "<div class='msgbox2'>Please provide your Name.</div>";
         }
-
-
-
-
-
-   
     }
-    ?>
+    
+    }
+    catch (PDOException $pdoe) {
 
-    <!-- </div> -->
+            echo $pdoe;
+        }
+?>
+
 
 </body>
 
 </html>
+
+
 
 

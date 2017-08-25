@@ -1,0 +1,53 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25-Aug-2017, 5:46:55 PM
+    Author     : Josiane Gamgo
+*/
+label{
+
+    display:inline-block;
+    width:150px;
+    float:left;
+    text-align: left;
+    margin-bottom: 15px;
+    clear:left;
+
+}
+input{
+
+    display: inline-block;
+    float:left;
+    text-align: left;
+    margin-bottom: 15px;
+    padding: 5px;
+
+}
+label + input, label + select{width:450px;}
+div + input{   
+    width:150px;
+}
+.box{
+    width: 700px;
+    position: absolute;
+    border:2px solid black;
+    padding: 10px;
+    margin: 50px;
+    vertical-align: middle;
+}
+
+.msgbox1,.msgbox2{
+    
+    font-size: 1.2em;
+    font-weight: bold;
+
+}
+.msgbox1{
+    color:green;
+}
+.msgbox2{
+    color:red;
+}
