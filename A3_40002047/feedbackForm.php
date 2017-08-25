@@ -58,7 +58,7 @@
             try {
                 // connection string  and statement
                 
-                $db = new PDO('mysql:hostname=localhost:3307;dbname=CEWP459_A3', 'root', 'concordia');
+                $db = new PDO('mysql:hostname=localhost:3307;dbname=cewp459_a3', 'root', 'concordia');
                 $stmt = $db->prepare("INSERT INTO WebInquiries(Email,FirstName,LastName,Phone,ProductId,Question )"
                         . " VALUES(:mail,:fname,:lname,:phone,:productid,:qst)");
 
@@ -68,7 +68,7 @@
                 $stmt->bindParam(':fname', $firstname);
                 $stmt->bindParam(':lname', $lastname);
                 $stmt->bindParam(':phone', $phone);
-                $stmt->bindParam(':productid', PRODUCTID);
+                $stmt->bindValue(':productid', PRODUCTID);
                 $stmt->bindParam(':qst', $question);
 
 
