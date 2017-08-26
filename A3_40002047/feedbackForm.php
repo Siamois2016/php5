@@ -15,6 +15,10 @@
          */
 
         define('PRODUCTID', NULL);
+        $dsn = 'mysql:hostname=localhost';
+        $username='root';
+        $password ='concordia';
+        
 
         /*
          * A function to display the form
@@ -71,7 +75,9 @@
             try {
                 // connection string  and statement
                 
-                $db = new PDO('mysql:hostname=localhost:3307;dbname=cewp459_a3', 'root', 'concordia');
+                $db = new PDO($dsn, $username, $password);
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                
                 $stmt = $db->prepare("INSERT INTO WebInquiries(Email,FirstName,LastName,Phone,ProductId,Question )"
                         . " VALUES(:mail,:fname,:lname,:phone,:productid,:qst)");
 

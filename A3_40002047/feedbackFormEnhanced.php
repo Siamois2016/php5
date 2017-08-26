@@ -14,7 +14,7 @@
          * code a drop-down selection allowing selection of a product from the customer.
          * The products that are listed are read from the “Products” table in the database.
          */
-
+         
         //select the products from the database
     try {
 
@@ -24,8 +24,10 @@
 
         function displayForm() {
             //define the connection string 
-            $db = new PDO('mysql:hostname=localhost:3307;dbname=cewp459_a3', 'root', 'concordia'); 
-            $statement = $db->query("SELECT * FROM products ");
+            $db = new PDO('mysql:hostname=localhost;dbname=cewp459_a3', 'root', 'concordia'); 
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            $statement = $db->query("SELECT * FROM products; ");
             $resultset = $statement->fetchAll(PDO::FETCH_ASSOC);
        
 ?>
@@ -46,7 +48,7 @@
                 <input type="text" name="phone"  pattern="\d{3}[\s-.]\d{3}[\s-.]\d{4}"/>  
                 
                 <label>Select Product :</label> 
-                <select name="productid">
+                <select name="product">
 
                     <?php
                     foreach ($resultset as $row) {
@@ -83,10 +85,12 @@
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $phone = $_POST['phone'];
-            $productId = $_POST['productid'];
+            $product = $_POST['product'];
             $question = $_POST['question'];
             //use PDO to insert data into the Webinquiries table
-                $db = new PDO('mysql:hostname=localhost:3307;dbname=cewp459_a3', 'root', 'concordia');
+                $db = new PDO('mysql:hostname=localhost;dbname=cewp459_a3', 'root', 'concordia');
+               $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+               
                 $stmt = $db->prepare("INSERT INTO WebInquiries(Email,FirstName,LastName,Phone,ProductId,Question)"
                         . " VALUES(:mail,:fname,:lname,:phone,:productid,:qst)");
 
@@ -96,7 +100,7 @@
                 $stmt->bindParam(':fname', $firstname);
                 $stmt->bindParam(':lname', $lastname);
                 $stmt->bindParam(':phone', $phone);
-                $stmt->bindParam(':productid', $productId);
+                $stmt->bindParam(':productid', $product);
                 $stmt->bindParam(':qst', $question);
 
 
