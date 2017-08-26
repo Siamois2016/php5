@@ -9,7 +9,7 @@ try {
     $dsn = 'mysql:hostname=localhost';
     $username = 'root';
     $password = 'concordia';
-
+    //connect once
     $db = new PDO($dsn, $username, $password);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -74,8 +74,6 @@ try {
                             }
                             echo "</tr>";
                         }
-
-
                         echo "</table>";
                     }
                    if (empty($_POST['tablename'])) {

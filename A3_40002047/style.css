@@ -10,10 +10,10 @@ body{
     font-size: 0.85em;
 }
 h2{
-    
+
     color:rgb(202,113,111);
     font-size: 1.3em;
-       
+
 }
 label{
 
@@ -34,7 +34,7 @@ input{
     padding: 5px;
 
 }
- label + input, label+select{
+label + input, label+select{
     width:450px;
 }
 
@@ -65,20 +65,20 @@ input{
 /*Formatted table*/
 #box2{
     position: absolute;
-   padding: 50px; 
-   margin: 20px;
-  
+    padding: 50px; 
+
+
 }
 table{
     border:1px solid black;
     white-space: nowrap;
-   
-   
-    
+
+
+
 }
 th,td{
-   border:1px solid black;
-   padding-left:5px;
-   padding-right:20px;
+    border:1px solid black;
+    padding-left:5px;
+    padding-right:20px;
     text-align: left;
 }
