@@ -27,6 +27,16 @@ CREATE TABLE `CEWP459_A3`.`WebInquiries` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+/*Create another table Notes to display its content later as formatted table */
+
+CREATE TABLE `CEWP459_A3`.`Notes` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `Note` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ID`));
+
+
+/*Insert Data into Products and Notes tables. */
+
 Use CEWP459_A3 ;
 
 insert into CEWP459_A3.Products (Name, Price)
@@ -36,3 +46,12 @@ values
 ('Camping Stove', 79.99),
 ('Electric Lantern', 49.99),
 ('Gas Lantern', 89.99);
+
+insert into CEWP459_A3.Notes (Note)
+values
+('First Note'),
+('Second Note'),
+('Third Note'),
+('Fourth Note: PHP5 Assignment3'),
+('Another Note');
+

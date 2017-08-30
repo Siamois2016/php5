@@ -12,7 +12,6 @@
 
         define('PRODUCTID', NULL);
 
-
         /*
          * A function to display the form
          * Assuming the phone number is a canadian local phone like 999-999-9999
@@ -45,12 +44,13 @@
         </div>
         <?php
     }
-        //if the url is called show the Form
+
+    //if the url is called show the Form
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         displayForm();
     }
 
-         // check if form is posted 
+    // check if form is posted 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         displayForm();
         //validate values

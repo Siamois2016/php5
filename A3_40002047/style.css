@@ -4,7 +4,7 @@
     Author     : Josiane Gamgo
 */
 
-/*Feedback Form*/
+/*Style for the feedback Form*/
 body{
     font-family: "Arial", Verdana, sans-serif;
     font-size: 0.85em;
@@ -15,6 +15,7 @@ h2{
     font-size: 1.3em;
 
 }
+/*Align the label and input text horizontally on the left with specific width*/
 label{
 
     display:inline-block;
@@ -38,8 +39,7 @@ label + input, label+select{
     width:450px;
 }
 
-
-
+/*Define a box of 700 px that contains the form */
 .box{
     width: 700px;
     position: absolute;
@@ -49,10 +49,12 @@ label + input, label+select{
     margin: 50px;
     vertical-align: middle;
 }
-
+/*The message msgbox1 displays a success message on top of the form 
+* msgbox2 displays an error message.
+*/
 .msgbox1,.msgbox2{
 
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
 
 }
@@ -62,18 +64,17 @@ label + input, label+select{
 .msgbox2{
     color:red;
 }
-/*Formatted table*/
+/******************************************************************************/
+
+/*Style for the Formatted table*/
+
 #box2{
     position: absolute;
     padding: 50px; 
-
-
 }
 table{
     border:1px solid black;
     white-space: nowrap;
-
-
 
 }
 th,td{
@@ -81,4 +82,8 @@ th,td{
     padding-left:5px;
     padding-right:20px;
     text-align: left;
+}
+th{
+    background-color: rgba(202,113,111,0.6);
+
 }
