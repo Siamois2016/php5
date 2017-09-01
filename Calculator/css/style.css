@@ -1,0 +1,43 @@
+
+/* 
+    Created on : 2017-07-07, 16:46:17
+    Modified on : 2017-07-19, 18:04:56
+    Author     : josiane Gamgo
+*/
+
+h3{
+    /*border: 2px teal solid;*/
+    background-color: deepskyblue;
+    box-shadow: 4px 4px 3px teal;
+    text-decoration: underline;
+    font-weight: bold;
+    text-align: center;
+}
+
+ #box2,#colorbox{
+    
+    width:500px;
+    height:400px;
+   
+    
+}
+#box2 table, tr, td{
+    border:1px black solid ;
+    text-align: center;
+  
+   
+ 
+}
+#box2 td, #colorbox td{
+      padding: 5px;
+}
+
+.head{
+    background-color: #E2E1E6;
+    font-weight: bold;
+}
+
+#colorbox table{
+    width: 100%;
+    
+}
