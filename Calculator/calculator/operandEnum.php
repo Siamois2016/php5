@@ -9,7 +9,7 @@
 /**
  * Description of operandEnum
  *
- * @author josiane Gamgo
+ * @author josigam15
  */
 class operandEnum {
    //A class to enumerate the arithmetic operand to be used
