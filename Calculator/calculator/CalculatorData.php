@@ -3,7 +3,7 @@
 /**
  * Description of CalculatorData
  *
- * @author josiane Gamgo
+ * @author josigam15
  */
 class CalculatorData {
 
